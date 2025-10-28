@@ -1,10 +1,5 @@
 #include <iostream>
-#include "view.h"
-#include "state.h"
-#include "dashboard.h"
-#include "id.h"
-#include "power.h"
-#include "wifi.h"  
+#include "main.h"
 
 using namespace std;
 
@@ -16,6 +11,7 @@ int main() {
   Power *power = new Power(view);
   ID *id = new ID(view);
   view = new View(dashboard);
+  Display screen;
 // page.view = view
 // page1.field1 = myfunction -> go to page 2
 // page1.field2  = []
@@ -38,10 +34,13 @@ int main() {
     cin >> command;
     if(command == "up"){
       view->press_up();
+      screen.show();
     } else if(command == "down"){
       view->press_down();
+      screen.show();
     } else if(command == "select"){
       view->press_select();
+      screen.show();
     } else if(command == "exit"){
       break;
     }

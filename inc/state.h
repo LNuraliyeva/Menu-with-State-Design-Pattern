@@ -3,12 +3,29 @@
 
 #include <unordered_map>
 #include <functional>
+#include <string>
 
 class View; // forward deklaration
 class Dashboard;
 class Wifi;
 class Power;
 class ID;
+
+
+struct FieldStrings{
+    std::string field_one_string;
+    std::string field_two_string;
+    std::string field_three_string;
+    bool field_one_highlighted;
+    bool field_two_highlighted;
+    bool field_three_highlighted;
+
+    /* instead of 3 boolens use this :  std::vector<bool> highlights(options.size(), false);
+highlights[current_index] = true;
+ and this field_strings.field_one_highlighted = highlights[0];
+field_strings.field_two_highlighted = highlights[1];
+ but without the assigning the value again just add highlighted "array" into the struct. then change them in the scroll up and down funktions */ 
+};
 
 class State{
     protected: 
@@ -36,6 +53,8 @@ class State{
             _parent = state;
         }
         
+        FieldStrings field_strings;
+        FieldStrings submenu_field_strings;
         std::unordered_map<int, std::function<void(State*)>> setChild;
         virtual void button_up_pressed() = 0;       // the funktion is made ecual 0 
         virtual void button_down_pressed() = 0;

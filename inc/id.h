@@ -22,7 +22,6 @@ private:
 
 public:
     ID(View* v);
-
     void button_up_pressed() override;
     void button_down_pressed() override;
     void button_select_pressed() override;

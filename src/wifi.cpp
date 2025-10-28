@@ -4,6 +4,9 @@ Wifi::Wifi(View* v) {
     this->_view = v;
     wifi_option = {LINE_ONE, LINE_TWO};
     current_index = 0;
+    field_strings.field_one_string = "Wifi Submenu line one";
+    field_strings.field_two_string = "Wifi Submenu line two";
+    field_strings.field_three_string = "";
     wifi_menu_actions = {
         {LINE_ONE, [this]() {
             _view->changeState(_parent);
@@ -17,12 +20,17 @@ Wifi::Wifi(View* v) {
 
 void Wifi::button_up_pressed() {
     current_index = (current_index - 1 + wifi_option.size()) % wifi_option.size();
-    std::cout << "Scrolled to option " << current_index << "\n";
+    //std::cout << "Scrolled to option " << current_index << "\n";
+    field_strings.field_one_highlighted = current_index % wifi_option.size();
+    field_strings.field_two_highlighted = current_index % wifi_option.size();
+
 }
 
 void Wifi::button_down_pressed() {
     current_index = (current_index + 1) % wifi_option.size();
-    std::cout << "Scrolled to option " << current_index << "\n";
+    // std::cout << "Scrolled to option " << current_index << "\n";
+    field_strings.field_one_highlighted = current_index % wifi_option.size();
+    field_strings.field_two_highlighted = current_index % wifi_option.size();
 }
 
 void Wifi::button_select_pressed() {

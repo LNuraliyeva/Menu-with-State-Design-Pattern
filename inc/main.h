@@ -1,0 +1,7 @@
+#include "view.h"
+#include "state.h"
+#include "dashboard.h"
+#include "id.h"
+#include "power.h"
+#include "wifi.h"  
+#include "display.h"
