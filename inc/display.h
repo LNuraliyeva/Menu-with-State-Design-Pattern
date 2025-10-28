@@ -5,9 +5,7 @@
 
 class Display{
     public:
-        void show();
-    private:
-        State* current_state;
+        void show(FieldStrings field_strings);
 };
 
 #endif // DISPLAY_H

@@ -12,29 +12,33 @@ Dashboard::Dashboard(View* v) {
     actions = {
         {0, [this]() {
             _view->changeState(_child_wifi);
-            std::cout << "Changed to Wifi submenu\n";
+            //std::cout << "Changed to Wifi submenu\n";
         }},
         {1, [this]() {
             _view->changeState(_child_power);
-            std::cout << "Changed to Power submenu\n";
+            //std::cout << "Changed to Power submenu\n";
         }},
         {2, [this]() {
             _view->changeState(_child_id);
-            std::cout << "Changed to ID submenu\n";
+            //std::cout << "Changed to ID submenu\n";
         }}
     };
 }
 
 void Dashboard::button_up_pressed() {
     current_index = (current_index - 1 + options.size()) % options.size();
-    std::cout << "Scrolled up to line" << current_index << "\n";
-    field_strings.field_one_highlighted = current_index == 0;
-    field_strings.field_two_highlighted = current_index == 1;
+    // std::cout << "Scrolled up to line" << current_index << "\n";
+    field_strings.highlighted[0] = current_index == 0;
+    field_strings.highlighted[1] = current_index == 1;
+    field_strings.highlighted[2] = current_index == 2;
 }
 
 void Dashboard::button_down_pressed() {
     current_index = (current_index + 1) % options.size();
-    std::cout << "Scrolled down to line " << current_index << "\n";
+    // std::cout << "Scrolled down to line " << current_index << "\n";
+    field_strings.highlighted[0] = current_index == 0;
+    field_strings.highlighted[1] = current_index == 1;
+    field_strings.highlighted[2] = current_index == 2;
 }
 
 void Dashboard::button_select_pressed() {
