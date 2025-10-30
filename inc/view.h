@@ -18,6 +18,7 @@ public:
     void press_up();
     void press_down();
     void press_select();
+    void display();
 };
 
 #endif // VIEW_H

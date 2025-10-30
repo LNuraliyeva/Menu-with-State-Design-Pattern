@@ -5,6 +5,7 @@
 
 class Display{
     public:
+        Display(){}
         void show(FieldStrings field_strings);
 };
 

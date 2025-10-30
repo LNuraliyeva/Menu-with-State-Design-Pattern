@@ -21,7 +21,7 @@ private:
     std::unordered_map<PowerOptions, std::function<void()>> power_menu_actions;
     
 public:
-    Power(View* v);
+    Power(View* v, FieldStrings field_strings);
 
     void button_up_pressed() override;
     void button_down_pressed() override;

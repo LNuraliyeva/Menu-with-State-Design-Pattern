@@ -21,7 +21,7 @@ private:
     std::unordered_map<IDOptions, std::function<void()>> id_menu_actions;
 
 public:
-    ID(View* v);
+    ID(View* v, FieldStrings field_strings);
     void button_up_pressed() override;
     void button_down_pressed() override;
     void button_select_pressed() override;

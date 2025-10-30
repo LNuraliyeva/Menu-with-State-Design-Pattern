@@ -26,3 +26,9 @@ void View::press_down() {
 void View::press_select() {
     if (_state) _state->button_select_pressed();
 }
+void View::display() {
+    if (_state) {
+        FieldStrings fs = _state->getFieldStrings();
+        fs.show();
+    }
+}

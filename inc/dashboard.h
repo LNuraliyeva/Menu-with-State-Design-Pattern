@@ -9,17 +9,13 @@
 #include <unordered_map>
 #include <functional>
 
-class Power;
-class Wifi;
-class ID;
-
 class Dashboard : public State {
 private:
     std::vector<std::string> options;
     int current_index;
     std::unordered_map<int, std::function<void()>> actions;
 public:
-    Dashboard(View* v);
+    Dashboard(View* v, FieldStrings field_strings);
     void button_up_pressed() override;
     void button_down_pressed() override;
     void button_select_pressed() override;

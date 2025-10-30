@@ -19,9 +19,8 @@ private:
     int current_index;
     std::vector<WifiOptions> wifi_option;
     std::unordered_map<WifiOptions, std::function<void()>> wifi_menu_actions;
-
 public:
-    Wifi(View* v);
+    Wifi(View* v, FieldStrings field_strings);
     void button_up_pressed() override;
     void button_down_pressed() override;
     void button_select_pressed() override;
