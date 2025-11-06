@@ -2,7 +2,7 @@
 #define DASHBOARD_H
 
 #include "state.h"
-#include "view.h"
+#include "context.h"
 #include <memory>
 #include <string>
 #include <vector>
@@ -11,13 +11,12 @@
 
 class Dashboard : public State {
 private:
-    std::vector<std::string> options;
-    int current_index;
+    // std::vector<std::string> options;
     std::unordered_map<int, std::function<void()>> actions;
 public:
-    Dashboard(View* v, FieldStrings field_strings);
-    void button_up_pressed() override;
-    void button_down_pressed() override;
+    Dashboard(Context* context, FieldStrings field_strings);
+    // void button_up_pressed() override;
+    // void button_down_pressed() override;
     void button_select_pressed() override;
 };
 

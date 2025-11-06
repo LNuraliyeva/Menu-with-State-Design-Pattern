@@ -4,25 +4,32 @@
 using namespace std;
 
 int main() {
-  View *view;
-  FieldStrings field_strings; // it is not a pointer because of the strings does not have allocated memory yet
-  Dashboard *dashboard = new Dashboard(view, field_strings);
-  
-  Power *power = new Power(view, field_strings);
-  ID *id = new ID(view, field_strings);
-  Wifi *wifi = new Wifi(view, field_strings);
-  view = new View(dashboard);
-  //Display screen;
-  
-// page.view = view
-// page1.field1 = myfunction -> go to page 2
-// page1.field2  = []
-// page.field3  = myfunction2 -> go Back
-//
-// page.display() -> print(Fielf1, field2, field3 , ...)
+  Context *context;
+  FieldStrings field_strings_camera1; // it is not a pointer because of the strings does not have allocated memory yet
+  std::string command;
 
-// view.add(Page)
-// 
+  set_field(field_strings_camera1, "device_number", "123");
+  set_field(field_strings_camera1, "flash1", "FlashX ");
+  set_field(field_strings_camera1, "HW_version", "1.0.0");
+  set_field(field_strings_camera1, "SW_version", "2.1.3");
+  set_field(field_strings_camera1, "checksum", "ABCDEF123456");
+  set_field(field_strings_camera1, "flash_count", "1500");
+  set_field(field_strings_camera1, "flash_count_last", "1450");
+  set_field(field_strings_camera1, "battery1_time_left", "2h 30m");
+  set_field(field_strings_camera1, "battery2_time_left", "3h 15m");
+  set_field(field_strings_camera1, "barrety1", "75%");
+  set_field(field_strings_camera1, "battery2", "85%");
+  set_field(field_strings_camera1, "flash_intencity", "75%");
+  set_field(field_strings_camera1, "wifi", "on");
+  set_field(field_strings_camera1, "ism", "on");
+
+Dashboard *dashboard = new Dashboard(context, field_strings_camera1);
+  
+  Power *power = new Power(context, field_strings_camera1);
+  ID *id = new ID(context, field_strings_camera1);
+  Wifi *wifi = new Wifi(context, field_strings_camera1);
+  context = new Context(dashboard);
+
   id->setParent(dashboard);
   power->setParent(dashboard);
   wifi->setParent(dashboard);
@@ -30,21 +37,19 @@ int main() {
   dashboard->setChild[1](power);
   dashboard->setChild[2](id);
 
-  view->display();
-  std::string command;
+context->display();
 
   while(true){
     cin >> command;
-    if(true){
-      view->press_up();
-      view->display();
-      break;
+    if(command == "up"){
+      context->press_up();
+      context->display();
     } else if(command == "down"){
-      view->press_down();
-      view->display();
+      context->press_down();
+      context->display();
     } else if(command == "select"){
-      view->press_select();
-      view->display();
+      context->press_select();
+      context->display();
     } else if(command == "exit"){
       break;
     }

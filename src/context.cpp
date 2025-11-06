@@ -1,32 +1,32 @@
-#include "view.h"
+#include "context.h"
 
-View::View(State* state) {
+Context::Context(State* state) {
     this->changeState(state);
 }
 
-View::~View() = default;
+Context::~Context() = default;
 
-void View::changeState(State* state) {
+void Context::changeState(State* state) {
     if (!state) {
         std::cerr << "Error: Tried to change to a null state.\n";
         return;
     }
     this->_state = state;
-    this->_state->changeView(this);
+    this->_state->changeContext(this);
 }
 
-void View::press_up() {
+void Context::press_up() {
     if (_state) _state->button_up_pressed();
 }
 
-void View::press_down() {
+void Context::press_down() {
     if (_state) _state->button_down_pressed();
 }
 
-void View::press_select() {
+void Context::press_select() {
     if (_state) _state->button_select_pressed();
 }
-void View::display() {
+void Context::display() {
     if (_state) {
         FieldStrings fs = _state->getFieldStrings();
         fs.show();

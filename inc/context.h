@@ -1,18 +1,18 @@
-#ifndef VIEW_H
-#define VIEW_H
+#ifndef CONTEXT_H
+#define CONTEXT_H
 
 #include <memory>
 #include <iostream>
 #include "state.h"
 
 
-class View {
+class Context {
 private:
     State* _state;
 
 public:
-    View(State* state);
-    ~View();
+    Context(State* state);
+    ~Context();
 
     void changeState(State* state);
     void press_up();
@@ -21,4 +21,4 @@ public:
     void display();
 };
 
-#endif // VIEW_H
+#endif // CONTEXT_H
