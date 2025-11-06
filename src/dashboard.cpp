@@ -4,12 +4,12 @@
 Dashboard::Dashboard(Context* context, FieldStrings field_strings) {
     this->_context = context;
 
-    options = {LINE_TWO, LINE_THREE, LINE_FOUR};
+    //options = {LINE_TWO, LINE_THREE, LINE_FOUR};
     current_index = 0;
     this->_field_strings = field_strings;
     this->_field_strings.field_one_string =  _field_strings.flash1 + _field_strings.device_number;
     this->_field_strings.field_two_string = "Wifi: " + _field_strings.wifi;
-    this->_field_strings.field_three_string = "  Battery1: " + _field_strings.barrety1 + _field_strings.battery1_time_left + 
+    this->_field_strings.field_three_string = "Battery1: " + _field_strings.barrety1 + _field_strings.battery1_time_left + 
                                               "  Battery2: " + _field_strings.battery2 + _field_strings.battery2_time_left;
     this->_field_strings.field_four_string = "Flash Intencity : " + _field_strings.flash_intencity;
     this->_field_strings.field_five_string = "Module ID: " + _field_strings.module_id;

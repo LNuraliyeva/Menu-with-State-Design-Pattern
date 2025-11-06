@@ -96,16 +96,16 @@ class State{
         State* _child_power = nullptr;
         State* _child_id = nullptr;
         int current_index = 0;
-        enum Options {
-            LINE_ONE = 0,
-            LINE_TWO = 1,
-            LINE_THREE = 2,
-            LINE_FOUR = 3,
-            LINE_FIVE = 4,
-            LINE_SIX = 5
-        };
+        // enum Options {
+        //     LINE_ONE = 0,
+        //     LINE_TWO = 1,
+        //     LINE_THREE = 2,
+        //     LINE_FOUR = 3,
+        //     LINE_FIVE = 4,
+        //     LINE_SIX = 5
+        // };
 
-        std::vector<Options> options;
+        // std::vector<Options> options;
     public:
         State() {
             setChild = {
@@ -120,16 +120,16 @@ class State{
             this->_context = context;         // view changed with pointer
         }
 
-        void scroll_down(){
-            _field_strings.field_two_string = _field_strings.field_four_string;
-            _field_strings.field_three_string = _field_strings.field_five_string;
-            _field_strings.field_four_string = _field_strings.field_six_string;            
-        }
-        void scroll_up(){
-            _field_strings.field_four_string = _field_strings.field_two_string;
-            _field_strings.field_five_string = _field_strings.field_three_string;
-            _field_strings.field_six_string = _field_strings.field_four_string;         
-        }
+        // void scroll_down(){
+        //     _field_strings.field_two_string = _field_strings.field_four_string;
+        //     _field_strings.field_three_string = _field_strings.field_five_string;
+        //     _field_strings.field_four_string = _field_strings.field_six_string;            
+        // }
+        // void scroll_up(){
+        //     _field_strings.field_four_string = _field_strings.field_two_string;
+        //     _field_strings.field_five_string = _field_strings.field_three_string;
+        //     _field_strings.field_six_string = _field_strings.field_four_string;         
+        // }
 
         void setParent(State* state)
         {
@@ -142,11 +142,11 @@ class State{
         //FieldStrings submenu_field_strings;
         std::unordered_map<int, std::function<void(State*)>> setChild;
         void button_up_pressed() {
-            current_index = current_index - 1;
-            if(current_index == -1){
-                scroll_up();
-                current_index = 2;
-            }
+            current_index = (current_index + 2) % 3;
+            // if(current_index == -1){
+            //     scroll_up();
+            //     current_index = 2;
+            // }
             // std::cout << "Scrolled up to line" << current_index << "\n";
             this->_field_strings.highlighted[0] = current_index == 0;
             this->_field_strings.highlighted[1] = current_index == 1;
@@ -154,11 +154,11 @@ class State{
             
         }
         void button_down_pressed() {
-            current_index = current_index + 1;
-            if(current_index == 3){
-                scroll_down();
-                current_index = 0; 
-            } 
+            current_index = (current_index + 1) % 3;
+            // if(current_index == 3){
+            //     scroll_down();
+            //     current_index = 0; 
+            // } 
             // std::cout << "Scrolled down to line " << current_index << "\n";
             this->_field_strings.highlighted[0] = current_index == 0;
             this->_field_strings.highlighted[1] = current_index == 1;
